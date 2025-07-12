@@ -164,7 +164,7 @@ const Hero: React.FC = () => {
               }}
             >
               <source 
-                src="public/large.mp4"
+                src="/large.mp4"
                 type="video/mp4"
               />
               {/* Fallback content for unsupported browsers */}
