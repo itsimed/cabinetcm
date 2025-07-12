@@ -164,7 +164,7 @@ const Hero: React.FC = () => {
               }}
             >
               <source 
-                src="https://videocdn.cdnpk.net/videos/c8430aa9-5545-54f5-a357-2ec22608752e/vertical/previews/clear/large.mp4?token=exp=1752341838~hmac=cb44ce31608568b6ac367e7523f2a115dcac24c215c897e31e59faed171d716b"
+                src="public/large.mp4"
                 type="video/mp4"
               />
               {/* Fallback content for unsupported browsers */}
