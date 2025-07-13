@@ -145,128 +145,59 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <motion.section 
+    <section 
       id="contact"
       className="relative py-16 lg:py-24 px-6 lg:px-12 overflow-hidden"
       style={{ 
         background: `linear-gradient(135deg, ${theme.colors.background} 0%, #f8fafc 50%, ${theme.colors.background} 100%)`
       }}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
     >
-      {/* Animated background elements */}
+      {/* Static background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            rotate: [0, 180, 360]
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute top-10 left-10 w-32 h-32 rounded-full bg-gradient-to-r from-blue-200/20 to-cyan-200/20 blur-xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 100, 0],
-            rotate: [360, 180, 0]
-          }}
-          transition={{
-            duration: 35,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-gradient-to-r from-purple-200/20 to-pink-200/20 blur-xl"
-        />
+        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-gradient-to-r from-blue-200/20 to-cyan-200/20 blur-xl" />
+        <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-gradient-to-r from-purple-200/20 to-pink-200/20 blur-xl" />
       </div>
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-center mb-16"
-        >
-          <motion.h2 
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
+        <div className="text-center mb-16">
+          <h2 
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 transition-transform duration-300 hover:scale-[1.02]"
             style={{ 
               fontFamily: theme.fonts.heading,
               color: theme.colors.primary 
             }}
-            whileHover={{ 
-              scale: 1.02,
-              transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-            }}
           >
             Contactez-nous
-          </motion.h2>
-          <motion.p 
+          </h2>
+          <p 
             className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
             style={{ 
               fontFamily: theme.fonts.body,
               color: theme.colors.text 
             }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
           >
             Prenez contact avec notre équipe pour toute demande ou information complémentaire.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         {/* Content Grid */}
-        <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ willChange: 'transform, opacity' }}
-          >
-            <motion.div 
-              className="bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500"
-              style={{ fontFamily: theme.fonts.body }}
-              whileHover={{ 
-                scale: 1.02,
-                transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }
-              }}
-            >
-              <motion.h3 
-                className="text-2xl font-bold mb-6"
+          <div style={{ fontFamily: theme.fonts.body }}>
+            <div className="bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500 hover:scale-[1.02]">
+              <h3 
+                className="text-2xl font-bold mb-6 transition-transform duration-300 hover:scale-[1.02]"
                 style={{ 
                   color: theme.colors.primary,
                   fontFamily: theme.fonts.heading 
                 }}
-                whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-                }}
               >
                 Envoyez-nous un message
-              </motion.h3>
+              </h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Full Name */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                >
+                <div>
                   <label 
                     htmlFor="fullName"
                     className="block text-sm font-medium mb-2"
@@ -274,16 +205,14 @@ const Contact: React.FC = () => {
                   >
                     Nom complet *
                   </label>
-                  <motion.input
+                  <input
                     type="text"
                     id="fullName"
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleInputChange}
                     aria-label="Nom complet"
-                    whileFocus={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-400 ease-out focus:outline-none backdrop-blur-sm bg-white/50 placeholder-gray-400 ${
+                    className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-400 ease-out focus:outline-none backdrop-blur-sm bg-white/50 placeholder-gray-400 focus:scale-[1.02] ${
                       errors.fullName 
                         ? 'border-red-400 focus:border-red-500 focus:ring-4 focus:ring-red-200' 
                         : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 hover:border-gray-300'
@@ -291,24 +220,14 @@ const Contact: React.FC = () => {
                     placeholder="Entrez votre nom complet"
                   />
                   {errors.fullName && (
-                    <motion.p 
-                      className="mt-1 text-sm text-red-500"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                    >
+                    <p className="mt-1 text-sm text-red-500">
                       {errors.fullName}
-                    </motion.p>
+                    </p>
                   )}
-                </motion.div>
+                </div>
 
                 {/* Email */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-                >
+                <div>
                   <label 
                     htmlFor="email"
                     className="block text-sm font-medium mb-2"
@@ -316,16 +235,14 @@ const Contact: React.FC = () => {
                   >
                     Adresse e-mail *
                   </label>
-                  <motion.input
+                  <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
                     aria-label="Adresse e-mail"
-                    whileFocus={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-400 ease-out focus:outline-none backdrop-blur-sm bg-white/50 placeholder-gray-400 ${
+                    className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-400 ease-out focus:outline-none backdrop-blur-sm bg-white/50 placeholder-gray-400 focus:scale-[1.02] ${
                       errors.email 
                         ? 'border-red-400 focus:border-red-500 focus:ring-4 focus:ring-red-200' 
                         : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 hover:border-gray-300'
@@ -333,24 +250,14 @@ const Contact: React.FC = () => {
                     placeholder="votre@email.com"
                   />
                   {errors.email && (
-                    <motion.p 
-                      className="mt-1 text-sm text-red-500"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                    >
+                    <p className="mt-1 text-sm text-red-500">
                       {errors.email}
-                    </motion.p>
+                    </p>
                   )}
-                </motion.div>
+                </div>
 
                 {/* Phone */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                >
+                <div>
                   <label 
                     htmlFor="phone"
                     className="block text-sm font-medium mb-2"
@@ -358,16 +265,14 @@ const Contact: React.FC = () => {
                   >
                     Téléphone *
                   </label>
-                  <motion.input
+                  <input
                     type="tel"
                     id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
                     aria-label="Numéro de téléphone"
-                    whileFocus={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-400 ease-out focus:outline-none backdrop-blur-sm bg-white/50 placeholder-gray-400 ${
+                    className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-400 ease-out focus:outline-none backdrop-blur-sm bg-white/50 placeholder-gray-400 focus:scale-[1.02] ${
                       errors.phone 
                         ? 'border-red-400 focus:border-red-500 focus:ring-4 focus:ring-red-200' 
                         : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 hover:border-gray-300'
@@ -375,24 +280,14 @@ const Contact: React.FC = () => {
                     placeholder="+1 (555) 000-0000"
                   />
                   {errors.phone && (
-                    <motion.p 
-                      className="mt-1 text-sm text-red-500"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                    >
+                    <p className="mt-1 text-sm text-red-500">
                       {errors.phone}
-                    </motion.p>
+                    </p>
                   )}
-                </motion.div>
+                </div>
 
                 {/* Message */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                >
+                <div>
                   <label 
                     htmlFor="message"
                     className="block text-sm font-medium mb-2"
@@ -400,15 +295,14 @@ const Contact: React.FC = () => {
                   >
                     Message *
                   </label>
-                  <motion.textarea
+                  <textarea
                     id="message"
                     name="message"
                     rows={5}
                     value={formData.message}
                     onChange={handleInputChange}
                     aria-label="Message"
-                    whileFocus={{ scale: 1.01 }}
-                    className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-300 focus:outline-none resize-none backdrop-blur-sm bg-white/50 placeholder-gray-400 ${
+                    className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-300 focus:outline-none resize-none backdrop-blur-sm bg-white/50 placeholder-gray-400 focus:scale-[1.01] ${
                       errors.message 
                         ? 'border-red-400 focus:border-red-500 focus:ring-4 focus:ring-red-200' 
                         : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 hover:border-gray-300'
@@ -416,16 +310,11 @@ const Contact: React.FC = () => {
                     placeholder="Décrivez votre demande ou question..."
                   />
                   {errors.message && (
-                    <motion.p 
-                      className="mt-1 text-sm text-red-500"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                    >
+                    <p className="mt-1 text-sm text-red-500">
                       {errors.message}
-                    </motion.p>
+                    </p>
                   )}
-                </motion.div>
+                </div>
 
                 {/* Submit Button */}
                 <motion.button
@@ -445,13 +334,7 @@ const Contact: React.FC = () => {
                   }}
                 >
                   {/* Animated background */}
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1200 ease-out"
-                    whileHover={{ 
-                      x: "100%",
-                      transition: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }
-                    }}
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1200 ease-out" />
                   
                   {/* Content */}
                   <span className="relative z-10">
@@ -461,86 +344,55 @@ const Contact: React.FC = () => {
 
                 {/* Submit Message */}
                 {submitMessage && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -20, scale: 0.8 }}
+                  <div
                     className={`p-6 rounded-2xl text-center backdrop-blur-sm border ${
                       submitMessage.includes('succès') 
                         ? 'bg-green-50/80 text-green-800 border-green-200' 
                         : 'bg-red-50/80 text-red-800 border-red-200'
                     }`}
                   >
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                    <div
                       className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-3 ${
                         submitMessage.includes('succès') ? 'bg-green-200' : 'bg-red-200'
                       }`}
                     >
                       {submitMessage.includes('succès') ? '✓' : '⚠'}
-                    </motion.div>
+                    </div>
                     <p className="font-medium">{submitMessage}</p>
-                  </motion.div>
+                  </div>
                 )}
               </form>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ willChange: 'transform, opacity' }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <div>
-              <motion.h3 
-                className="text-2xl font-bold mb-6"
+              <h3 
+                className="text-2xl font-bold mb-6 transition-transform duration-300 hover:scale-[1.02]"
                 style={{ 
                   color: theme.colors.primary,
                   fontFamily: theme.fonts.heading 
                 }}
-                whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-                }}
               >
                 Informations de contact
-              </motion.h3>
+              </h3>
               
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.1 * index, ease: [0.25, 0.1, 0.25, 1] }}
                     className="group flex items-center space-x-4 p-6 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl hover:bg-white/80 transition-all duration-600 ease-out border border-white/30 cursor-pointer transform hover:-translate-y-2 hover:scale-[1.02]"
-                    whileHover={{ 
-                      y: -8,
-                      scale: 1.02,
-                      transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }
-                    }}
                   >
-                    <motion.div 
-                      className="p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300"
+                    <div 
+                      className="p-4 rounded-2xl group-hover:scale-110 transition-transform duration-300 group-hover:rotate-12"
                       style={{ 
                         background: `linear-gradient(135deg, ${theme.colors.primary}20, ${theme.colors.primary}10)`,
                         color: theme.colors.primary
                       }}
-                      whileHover={{ 
-                        rotate: 15, 
-                        scale: 1.2,
-                        transition: { type: "spring", stiffness: 300, damping: 15 }
-                      }}
                     >
                       {info.icon}
-                    </motion.div>
+                    </div>
                     <div>
                       <p 
                         className="text-sm font-medium opacity-75"
@@ -565,36 +417,22 @@ const Contact: React.FC = () => {
                         </p>
                       )}
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
 
             {/* Business Hours or Additional Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-              className="bg-white/60 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-white/30 hover:shadow-2xl transition-all duration-500"
-              whileHover={{ 
-                scale: 1.02,
-                transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }
-              }}
-            >
-              <motion.h4 
-                className="text-lg font-bold mb-4"
+            <div className="bg-white/60 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-white/30 hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]">
+              <h4 
+                className="text-lg font-bold mb-4 transition-transform duration-300 hover:scale-[1.02]"
                 style={{ 
                   color: theme.colors.primary,
                   fontFamily: theme.fonts.heading 
                 }}
-                whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-                }}
               >
                 Heures d'ouverture
-              </motion.h4>
+              </h4>
               <div 
                 className="space-y-2 text-sm"
                 style={{ 
@@ -615,11 +453,11 @@ const Contact: React.FC = () => {
                   <span>Fermé</span>
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            </div>
+          </div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

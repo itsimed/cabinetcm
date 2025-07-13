@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { theme } from '../../config/theme';
 
 // Contact icons
@@ -101,11 +100,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <motion.footer
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+    <footer
       className="relative py-16 lg:py-20 px-6 lg:px-12 overflow-hidden"
       style={{ 
         background: `linear-gradient(135deg, ${theme.colors.primary} 0%, #0ea5e9 50%, ${theme.colors.primary} 100%)`,
@@ -114,30 +109,10 @@ const Footer: React.FC = () => {
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            rotate: [0, 180, 360]
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
+        <div
           className="absolute top-10 right-10 w-32 h-32 rounded-full bg-white/10 blur-xl"
         />
-        <motion.div
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 100, 0],
-            rotate: [360, 180, 0]
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear"
-          }}
+        <div
           className="absolute bottom-10 left-10 w-40 h-40 rounded-full bg-white/10 blur-xl"
         />
       </div>
@@ -145,213 +120,106 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:col-span-2"
-          >
-            <motion.div
-              whileHover={{ 
-                scale: 1.02,
-                transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-              }}
-            >
+          <div className="lg:col-span-2">
+            <div>
               <img 
                 src="/logo cm.png" 
                 alt="Cabinet CM360" 
                 className="h-16 w-auto mb-6 drop-shadow-lg"
               />
-            </motion.div>
-            <motion.p 
-              className="text-white/90 text-lg leading-relaxed mb-6 max-w-md"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            >
+            </div>
+            <p className="text-white/90 text-lg leading-relaxed mb-6 max-w-md">
               Cabinet CM360 est votre partenaire de confiance pour une gestion de trésorerie optimale. 
               Notre expertise vous accompagne vers le succès financier.
-            </motion.p>
-            <motion.div 
-              className="flex space-x-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            >
+            </p>
+            <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
-                <motion.a
+                <a
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 text-white hover:text-white"
-                  whileHover={{ 
-                    scale: 1.1,
-                    y: -3,
-                    transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-                  }}
-                  whileTap={{ scale: 0.9 }}
                   aria-label={social.name}
                 >
                   {social.icon}
-                </motion.a>
+                </a>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Services */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            <motion.h3 
+          <div>
+            <h3 
               className="text-xl font-bold text-white mb-6"
               style={{ fontFamily: theme.fonts.heading }}
-              whileHover={{ 
-                scale: 1.02,
-                transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-              }}
             >
               Nos Services
-            </motion.h3>
-            <motion.ul 
-              className="space-y-3"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            >
+            </h3>
+            <ul className="space-y-3">
               {footerServices.map((service, index) => (
-                <motion.li 
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.4 + index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                  <motion.a
+                <li key={index}>
+                  <a
                     href={service.href}
                     className="text-white/80 hover:text-white transition-all duration-300 hover:translate-x-2 block"
-                    whileHover={{ 
-                      x: 8,
-                      transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-                    }}
                   >
                     {service.name}
-                  </motion.a>
-                </motion.li>
+                  </a>
+                </li>
               ))}
-            </motion.ul>
-          </motion.div>
+            </ul>
+          </div>
 
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-          >
-            <motion.h3 
+          <div>
+            <h3 
               className="text-xl font-bold text-white mb-6"
               style={{ fontFamily: theme.fonts.heading }}
-              whileHover={{ 
-                scale: 1.02,
-                transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-              }}
             >
               Contact
-            </motion.h3>
-            <motion.div 
-              className="space-y-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            >
+            </h3>
+            <div className="space-y-4">
               {contactInfo.map((info, index) => (
-                <motion.div 
+                <div 
                   key={index}
                   className="flex items-center space-x-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.5 + index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
                 >
-                  <motion.div 
-                    className="p-2 bg-white/20 backdrop-blur-sm rounded-full"
-                    whileHover={{ 
-                      scale: 1.1,
-                      rotate: 15,
-                      transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-                    }}
-                  >
+                  <div className="p-2 bg-white/20 backdrop-blur-sm rounded-full">
                     {info.icon}
-                  </motion.div>
-                  <motion.a
+                  </div>
+                  <a
                     href={info.href}
                     className="text-white/80 hover:text-white transition-all duration-300"
-                    whileHover={{ 
-                      scale: 1.02,
-                      transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-                    }}
                   >
                     {info.value}
-                  </motion.a>
-                </motion.div>
+                  </a>
+                </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Section */}
-        <motion.div 
-          className="mt-12 pt-8 border-t border-white/20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-        >
+        <div className="mt-12 pt-8 border-t border-white/20">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <motion.p 
-              className="text-white/70 text-sm"
-              whileHover={{ 
-                scale: 1.02,
-                transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-              }}
-            >
+            <p className="text-white/70 text-sm">
               © {new Date().getFullYear()} Cabinet CM360. Tous droits réservés.
-            </motion.p>
-            <motion.div 
-              className="flex space-x-6"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            >
+            </p>
+            <div className="flex space-x-6">
               {footerLinks.map((link, index) => (
-                <motion.a
+                <a
                   key={index}
                   href={link.href}
                   className="text-white/70 hover:text-white transition-all duration-300 text-sm"
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -2,
-                    transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-                  }}
                 >
                   {link.name}
-                </motion.a>
+                </a>
               ))}
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 };
 
