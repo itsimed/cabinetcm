@@ -3,26 +3,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { theme } from '../../config/theme';
 
-// Remplace le composant HamburgerIcon par une version 100% CSS
+// Version simplifiée pour Safari mobile
 const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
-  <div className="relative w-6 h-6 flex flex-col justify-center items-center">
+  <div className="w-6 h-6 flex flex-col justify-center items-center space-y-1">
     <span
-      className={`absolute left-0 top-1/2 w-6 h-0.5 bg-current transition-all duration-300 ease-in-out
-        ${isOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'}
-      `}
-      style={{ transitionProperty: 'transform, opacity, background' }}
+      className={`block w-6 h-0.5 bg-current transition-transform duration-200 ${
+        isOpen ? 'rotate-45 translate-y-1.5' : ''
+      }`}
     />
     <span
-      className={`absolute left-0 top-1/2 w-6 h-0.5 bg-current transition-all duration-300 ease-in-out
-        ${isOpen ? 'opacity-0' : ''}
-      `}
-      style={{ transitionProperty: 'transform, opacity, background' }}
+      className={`block w-6 h-0.5 bg-current transition-opacity duration-200 ${
+        isOpen ? 'opacity-0' : ''
+      }`}
     />
     <span
-      className={`absolute left-0 top-1/2 w-6 h-0.5 bg-current transition-all duration-300 ease-in-out
-        ${isOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'}
-      `}
-      style={{ transitionProperty: 'transform, opacity, background' }}
+      className={`block w-6 h-0.5 bg-current transition-transform duration-200 ${
+        isOpen ? '-rotate-45 -translate-y-1.5' : ''
+      }`}
     />
   </div>
 );
@@ -387,8 +384,13 @@ const Navbar: React.FC = () => {
             {/* Enhanced Mobile Menu Button - Absolute Position */}
             <button
               type="button"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 absolute right-0 top-0"
+              onClick={() => {
+                if (!isMenuAnimating) {
+                  setIsMobileMenuOpen(!isMobileMenuOpen);
+                }
+              }}
+              disabled={isMenuAnimating}
+              className="p-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 absolute right-0 top-0 disabled:pointer-events-none"
               style={{
                 color: isScrolled ? theme.colors.text : 'white',
                 backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.15)',
