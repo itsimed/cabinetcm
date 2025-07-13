@@ -54,22 +54,20 @@ const Hero: React.FC = () => {
         </AnimatePresence>
         
         <motion.video
-          className="w-full h-full object-cover transition-transform duration-800"
-          autoPlay
           muted
+          autoPlay
           loop
           playsInline
           preload="auto"
+          className="w-full h-full object-cover transition-transform duration-800"
           onLoadedData={handleVideoLoad}
           onError={handleVideoError}
           initial={{ opacity: 0 }}
           animate={{ opacity: videoLoaded ? 1 : 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <source 
-            src="/large.mp4"
-            type="video/mp4"
-          />
+          <source src="/large.webm" type="video/webm" />
+          <source src="/large.mp4" type="video/mp4" />
         </motion.video>
         {/* Dark overlay for better text readability on mobile */}
         <div className="absolute inset-0 bg-black/40" />
@@ -150,12 +148,12 @@ const Hero: React.FC = () => {
             {/* Video Element */}
             {!videoError ? (
               <motion.video
-                className="w-full h-full object-cover transition-transform duration-800"
-                autoPlay
                 muted
+                autoPlay
                 loop
                 playsInline
                 preload="auto"
+                className="w-full h-full object-cover transition-transform duration-800"
                 style={{ borderRadius: '0.75rem', minHeight: '100%', minWidth: '100%' }}
                 onLoadedData={handleVideoLoad}
                 onError={handleVideoError}
@@ -166,10 +164,8 @@ const Hero: React.FC = () => {
                 }}
                 transition={{ duration: 1, delay: 0.3 }}
               >
-                <source 
-                  src="/large.mp4"
-                  type="video/mp4"
-                />
+                <source src="/large.webm" type="video/webm" />
+                <source src="/large.mp4" type="video/mp4" />
               </motion.video>
             ) : (
               /* Fallback content for video error */
