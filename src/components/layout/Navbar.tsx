@@ -3,24 +3,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { theme } from '../../config/theme';
 
-// Version simplifiée pour Safari mobile
+// Version sans animations pour Safari mobile
 const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
   <div className="w-6 h-6 flex flex-col justify-center items-center space-y-1">
-    <span
-      className={`block w-6 h-0.5 bg-current transition-transform duration-200 ${
-        isOpen ? 'rotate-45 translate-y-1.5' : ''
-      }`}
-    />
-    <span
-      className={`block w-6 h-0.5 bg-current transition-opacity duration-200 ${
-        isOpen ? 'opacity-0' : ''
-      }`}
-    />
-    <span
-      className={`block w-6 h-0.5 bg-current transition-transform duration-200 ${
-        isOpen ? '-rotate-45 -translate-y-1.5' : ''
-      }`}
-    />
+    {isOpen ? (
+      // Icône X simple
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    ) : (
+      // Icône hamburger simple
+      <>
+        <span className="block w-6 h-0.5 bg-current" />
+        <span className="block w-6 h-0.5 bg-current" />
+        <span className="block w-6 h-0.5 bg-current" />
+      </>
+    )}
   </div>
 );
 
