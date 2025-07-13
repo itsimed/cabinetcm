@@ -183,18 +183,18 @@ const Navbar: React.FC = () => {
   const mobileMenuVariants = {
     closed: {
       opacity: 0,
-      height: 0,
+      scaleY: 0.85,
       transition: {
-        duration: 0.2,
-        ease: "easeInOut"
+        duration: 0.28,
+        ease: [0.4, 0, 0.2, 1]
       }
     },
     open: {
       opacity: 1,
-      height: "auto",
+      scaleY: 1,
       transition: {
-        duration: 0.2,
-        ease: "easeInOut"
+        duration: 0.38,
+        ease: [0.4, 0, 0.2, 1]
       }
     }
   };
@@ -417,7 +417,7 @@ const Navbar: React.FC = () => {
               initial="closed"
               animate="open"
               exit="closed"
-              className="md:hidden overflow-hidden border-t backdrop-blur-xl rounded-3xl bg-white/95 shadow-xl mx-4"
+              className="md:hidden overflow-hidden border-t backdrop-blur-xl rounded-3xl bg-white/95 shadow-xl mx-4 origin-top"
               style={{ 
                 borderColor: 'rgba(0, 0, 0, 0.06)',
                 boxShadow: '0 20px 40px rgba(0, 0, 0, 0.12)'

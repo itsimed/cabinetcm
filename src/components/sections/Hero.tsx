@@ -34,42 +34,14 @@ const Hero: React.FC = () => {
         fontFamily: theme.fonts.body 
       }}
     >
-      {/* Background Video for Mobile */}
+      {/* Background pour Mobile : image responsive */}
       <div className="absolute inset-0 w-full h-full md:hidden z-0 transition-opacity duration-500">
-        <AnimatePresence>
-          {isLoading && (
-            <motion.div
-              initial={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center z-10"
-            >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full"
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-        
-        <motion.video
-          muted
-          autoPlay
-          loop
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover transition-transform duration-800"
-          onLoadedData={handleVideoLoad}
-          onError={handleVideoError}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: videoLoaded ? 1 : 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          {/* MP4 d'abord pour Safari/iOS autoplay */}
-          <source src="/large.mp4" type="video/mp4" />
-          <source src="/large.webm" type="video/webm" />
-        </motion.video>
+        <img
+          src="/heromobile.webp"
+          alt="CM360 Hero Mobile"
+          className="w-full h-full object-cover"
+          style={{ objectFit: 'cover' }}
+        />
         {/* Dark overlay for better text readability on mobile */}
         <div className="absolute inset-0 bg-black/40" />
       </div>
@@ -165,8 +137,6 @@ const Hero: React.FC = () => {
                 }}
                 transition={{ duration: 1, delay: 0.3 }}
               >
-                {/* MP4 d'abord pour Safari/iOS autoplay */}
-                <source src="/large.mp4" type="video/mp4" />
                 <source src="/large.webm" type="video/webm" />
               </motion.video>
             ) : (
