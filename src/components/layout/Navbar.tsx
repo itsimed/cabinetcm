@@ -183,19 +183,15 @@ const Navbar: React.FC = () => {
   const mobileMenuVariants = {
     closed: {
       opacity: 0,
-      y: -32,
-      scale: 0.98,
       transition: {
-        duration: 0.22,
+        duration: 0.15,
         ease: [0.4, 0, 0.2, 1]
       }
     },
     open: {
       opacity: 1,
-      y: 0,
-      scale: 1,
       transition: {
-        duration: 0.32,
+        duration: 0.22,
         ease: [0.4, 0, 0.2, 1]
       }
     }
