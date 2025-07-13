@@ -42,6 +42,9 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
+  // Ajoute un état pour gérer l'animation du menu mobile
+  const [isMenuAnimating, setIsMenuAnimating] = useState(false);
+
   const navigationLinks: NavLink[] = [
     { name: 'Accueil', href: '#top', isAnchor: true },
     { name: 'Services', href: location.pathname === '/' ? '#services' : '/services', isAnchor: location.pathname === '/' },
@@ -401,6 +404,7 @@ const Navbar: React.FC = () => {
               whileTap={{ scale: 0.92 }}
               aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
               aria-expanded={isMobileMenuOpen}
+              disabled={isMenuAnimating}
             >
               <HamburgerIcon isOpen={isMobileMenuOpen} />
             </motion.button>
@@ -408,18 +412,22 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Menu - Modern & Sophisticated */}
-        <AnimatePresence>
+        <AnimatePresence
+          onExitComplete={() => setIsMenuAnimating(false)}
+        >
           {isMobileMenuOpen && (
             <motion.div
               variants={mobileMenuVariants}
               initial="closed"
               animate="open"
               exit="closed"
-              className="md:hidden overflow-hidden border-t backdrop-blur-xl rounded-3xl bg-white/95 shadow-xl mx-4 origin-top"
+              className="md:hidden overflow-hidden border-t backdrop-blur-xl rounded-3xl bg-white/95 shadow-xl mx-4 origin-top z-[9999]"
               style={{ 
                 borderColor: 'rgba(0, 0, 0, 0.06)',
                 boxShadow: '0 20px 40px rgba(0, 0, 0, 0.12)'
               }}
+              onAnimationStart={() => setIsMenuAnimating(true)}
+              onAnimationComplete={() => setIsMenuAnimating(false)}
             >
               <div className="px-6 py-6 space-y-2">
                 {navigationLinks.map((link, index) => {
