@@ -66,8 +66,9 @@ const Hero: React.FC = () => {
           animate={{ opacity: videoLoaded ? 1 : 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <source src="/large.webm" type="video/webm" />
+          {/* MP4 d'abord pour Safari/iOS autoplay */}
           <source src="/large.mp4" type="video/mp4" />
+          <source src="/large.webm" type="video/webm" />
         </motion.video>
         {/* Dark overlay for better text readability on mobile */}
         <div className="absolute inset-0 bg-black/40" />
@@ -164,8 +165,9 @@ const Hero: React.FC = () => {
                 }}
                 transition={{ duration: 1, delay: 0.3 }}
               >
-                <source src="/large.webm" type="video/webm" />
+                {/* MP4 d'abord pour Safari/iOS autoplay */}
                 <source src="/large.mp4" type="video/mp4" />
+                <source src="/large.webm" type="video/webm" />
               </motion.video>
             ) : (
               /* Fallback content for video error */
