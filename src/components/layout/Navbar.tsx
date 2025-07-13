@@ -382,32 +382,24 @@ const Navbar: React.FC = () => {
             </motion.div>
 
             {/* Enhanced Mobile Menu Button - Absolute Position */}
-            <motion.button
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            <button
+              type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2.5 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 absolute right-0 top-0"
-              style={{ 
+              className="p-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 absolute right-0 top-0"
+              style={{
                 color: isScrolled ? theme.colors.text : 'white',
                 backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.15)',
                 backdropFilter: 'blur(12px)',
                 border: `1px solid ${isScrolled ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.25)'}`,
-                boxShadow: isScrolled 
-                  ? '0 4px 12px rgba(0, 0, 0, 0.1)' 
+                boxShadow: isScrolled
+                  ? '0 4px 12px rgba(0, 0, 0, 0.1)'
                   : '0 4px 12px rgba(0, 0, 0, 0.2)'
               }}
-              whileHover={{ 
-                scale: 1.08,
-                transition: { duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }
-              }}
-              whileTap={{ scale: 0.92 }}
               aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
               aria-expanded={isMobileMenuOpen}
-              disabled={isMenuAnimating}
             >
               <HamburgerIcon isOpen={isMobileMenuOpen} />
-            </motion.button>
+            </button>
           </div>
         </div>
 
