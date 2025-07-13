@@ -123,7 +123,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2">
             <div>
               <img 
-                src="/logodesktop.webp" 
+                src="/logomobile.webp" 
                 alt="Cabinet CM360" 
                 className="h-16 w-auto mb-6 drop-shadow-lg"
               />

@@ -3,23 +3,26 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { theme } from '../../config/theme';
 
-// Hamburger menu icon
+// Remplace le composant HamburgerIcon par une version 100% CSS
 const HamburgerIcon = ({ isOpen }: { isOpen: boolean }) => (
-  <div className="w-6 h-6 flex flex-col justify-center items-center">
-    <motion.span
-      className="block h-0.5 w-6 bg-current mb-1"
-      animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-      transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+  <div className="relative w-6 h-6 flex flex-col justify-center items-center">
+    <span
+      className={`absolute left-0 top-1/2 w-6 h-0.5 bg-current transition-all duration-300 ease-in-out
+        ${isOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'}
+      `}
+      style={{ transitionProperty: 'transform, opacity, background' }}
     />
-    <motion.span
-      className="block h-0.5 w-6 bg-current mb-1"
-      animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-      transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+    <span
+      className={`absolute left-0 top-1/2 w-6 h-0.5 bg-current transition-all duration-300 ease-in-out
+        ${isOpen ? 'opacity-0' : ''}
+      `}
+      style={{ transitionProperty: 'transform, opacity, background' }}
     />
-    <motion.span
-      className="block h-0.5 w-6 bg-current"
-      animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-      transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+    <span
+      className={`absolute left-0 top-1/2 w-6 h-0.5 bg-current transition-all duration-300 ease-in-out
+        ${isOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'}
+      `}
+      style={{ transitionProperty: 'transform, opacity, background' }}
     />
   </div>
 );
