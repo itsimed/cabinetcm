@@ -9,8 +9,6 @@ interface ServiceCardProps {
   url?: string;
   index: number;
   details?: string[];
-  duration?: string;
-  price?: string;
   advantages?: string[];
 }
 
@@ -21,8 +19,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   url, 
   index,
   details,
-  duration,
-  price,
   advantages
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -117,8 +113,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           image,
           description,
           details,
-          duration,
-          price,
           advantages
         }}
       />

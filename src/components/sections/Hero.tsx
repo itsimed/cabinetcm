@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { theme } from '../../config/theme';
 
 const Hero: React.FC = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Preload video for better performance
+    const video = new window.Image();
+    video.src = '/large.mp4';
+  }, []);
 
   const handleVideoLoad = () => {
     setVideoLoaded(true);
     setVideoError(false);
+    setIsLoading(false);
   };
 
   const handleVideoError = () => {
     console.error('Video failed to load');
     setVideoError(true);
     setVideoLoaded(false);
+    setIsLoading(false);
   };
 
   return (
@@ -26,21 +36,41 @@ const Hero: React.FC = () => {
     >
       {/* Background Video for Mobile */}
       <div className="absolute inset-0 w-full h-full md:hidden z-0 transition-opacity duration-500">
-        <video
+        <AnimatePresence>
+          {isLoading && (
+            <motion.div
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center z-10"
+            >
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
+        <motion.video
           className="w-full h-full object-cover transition-transform duration-800"
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           onLoadedData={handleVideoLoad}
           onError={handleVideoError}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: videoLoaded ? 1 : 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           <source 
             src="/large.mp4"
             type="video/mp4"
           />
-        </video>
+        </motion.video>
         {/* Dark overlay for better text readability on mobile */}
         <div className="absolute inset-0 bg-black/40" />
       </div>
@@ -99,9 +129,27 @@ const Hero: React.FC = () => {
             className="relative w-full h-full overflow-hidden rounded-xl transition-transform duration-200 hover:scale-101"
             style={{ backgroundColor: theme.colors.light }}
           >
+            {/* Loading Indicator for Desktop */}
+            <AnimatePresence>
+              {isLoading && (
+                <motion.div
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center z-10 rounded-xl"
+                >
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                    className="w-10 h-10 border-3 border-blue-500 border-t-transparent rounded-full"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* Video Element */}
             {!videoError ? (
-              <video
+              <motion.video
                 className="w-full h-full object-cover transition-transform duration-800"
                 autoPlay
                 muted
@@ -111,15 +159,26 @@ const Hero: React.FC = () => {
                 style={{ borderRadius: '0.75rem', minHeight: '100%', minWidth: '100%' }}
                 onLoadedData={handleVideoLoad}
                 onError={handleVideoError}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ 
+                  opacity: videoLoaded ? 1 : 0,
+                  scale: videoLoaded ? 1 : 1.05
+                }}
+                transition={{ duration: 1, delay: 0.3 }}
               >
                 <source 
                   src="/large.mp4"
                   type="video/mp4"
                 />
-              </video>
+              </motion.video>
             ) : (
               /* Fallback content for video error */
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl">
+              <motion.div 
+                className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+              >
                 <div className="text-center p-8">
                   <div className="text-6xl mb-4">💼</div>
                   <h3 
@@ -135,13 +194,15 @@ const Hero: React.FC = () => {
                     Solutions professionnelles pour votre entreprise
                   </p>
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {/* Simple hero filter overlay */}
-            <div 
+            <motion.div 
               className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none transition-opacity duration-800"
-              style={{ animationDelay: '1.2s' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: videoLoaded ? 1 : 0 }}
+              transition={{ duration: 1, delay: 1 }}
             />
           </div>
         </div>

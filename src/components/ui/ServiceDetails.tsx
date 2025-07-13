@@ -10,8 +10,6 @@ interface ServiceDetailsProps {
     image: string;
     description: string;
     details?: string[];
-    duration?: string;
-    price?: string;
     advantages?: string[];
   };
 }
@@ -129,72 +127,13 @@ const ServiceDetails: React.FC<ServiceDetailsProps> = ({ isOpen, onClose, servic
             </p>
 
             {/* Additional Details Grid */}
-            {(service.details || service.duration || service.price || service.advantages) && (
+            {(service.details || service.advantages) && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                {/* Duration */}
-                {service.duration && (
-                  <div 
-                    className="backdrop-blur-sm rounded-xl p-4 border transition-all duration-300 hover:scale-[1.02]"
-                    style={{ 
-                      backgroundColor: `${theme.colors.primary}10`,
-                      borderColor: `${theme.colors.primary}20`
-                    }}
-                  >
-                    <div className="flex items-center space-x-3 mb-2">
-                      <div 
-                        className="p-2 rounded-full transition-all duration-300 hover:scale-110"
-                        style={{ backgroundColor: `${theme.colors.primary}20` }}
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                          style={{ color: theme.colors.primary }}
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <h3 className="font-semibold text-lg" style={{ color: theme.colors.primary }}>
-                        Durée
-                      </h3>
-                    </div>
-                    <p className="text-sm" style={{ color: theme.colors.text }}>
-                      {service.duration}
-                    </p>
-                  </div>
-                )}
-
-                {/* Price */}
-                {service.price && (
-                  <div 
-                    className="backdrop-blur-sm rounded-xl p-4 border transition-all duration-300 hover:scale-[1.02]"
-                    style={{ 
-                      backgroundColor: `${theme.colors.primary}10`,
-                      borderColor: `${theme.colors.primary}20`
-                    }}
-                  >
-                    <div className="flex items-center space-x-3 mb-2">
-                      <div 
-                        className="p-2 rounded-full transition-all duration-300 hover:scale-110"
-                        style={{ backgroundColor: `${theme.colors.secondary}20` }}
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                          style={{ color: theme.colors.secondary }}
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                        </svg>
-                      </div>
-                      <h3 className="font-semibold text-lg" style={{ color: theme.colors.primary }}>
-                        Tarif
-                      </h3>
-                    </div>
-                    <p className="text-sm" style={{ color: theme.colors.text }}>
-                      {service.price}
-                    </p>
-                  </div>
-                )}
 
                 {/* Details */}
                 {service.details && service.details.length > 0 && (
                   <div 
-                    className="backdrop-blur-sm rounded-xl p-4 border sm:col-span-2 transition-all duration-300 hover:scale-[1.01]"
+                    className="backdrop-blur-sm rounded-xl p-4 border col-span-1 sm:col-span-2 transition-all duration-300 hover:scale-[1.01]"
                     style={{ 
                       backgroundColor: `${theme.colors.primary}10`,
                       borderColor: `${theme.colors.primary}20`
@@ -234,7 +173,7 @@ const ServiceDetails: React.FC<ServiceDetailsProps> = ({ isOpen, onClose, servic
                 {/* Advantages */}
                 {service.advantages && service.advantages.length > 0 && (
                   <div 
-                    className="backdrop-blur-sm rounded-xl p-4 border sm:col-span-2 transition-all duration-300 hover:scale-[1.01]"
+                    className="backdrop-blur-sm rounded-xl p-4 border col-span-1 sm:col-span-2 transition-all duration-300 hover:scale-[1.01]"
                     style={{ 
                       backgroundColor: `${theme.colors.primary}10`,
                       borderColor: `${theme.colors.primary}20`

@@ -38,8 +38,6 @@ const Services: React.FC = () => {
                 url={service.url}
                 index={index}
                 details={service.details}
-                duration={service.duration}
-                price={service.price}
                 advantages={service.advantages}
               />
             </div>

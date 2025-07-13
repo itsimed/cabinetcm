@@ -251,20 +251,19 @@ const Navbar: React.FC = () => {
                     to="/"
                     className="flex items-center transition-all duration-300 hover:scale-105"
                   >
-                    <motion.img 
-                      src="/logo cm.png" 
-                      alt="Cabinet CM360 - Expert en gestion de trésorerie"
-                      className={`h-6 sm:h-8 md:h-12 lg:h-14 w-auto transition-all duration-300 ${
-                        isScrolled ? '' : 'drop-shadow-lg brightness-125'
-                      }`}
-                      style={{
-                        filter: isScrolled ? 'none' : 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
-                      }}
-                      whileHover={{ 
-                        scale: 1.05,
-                        transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-                      }}
-                    />
+                    <picture>
+                      <source srcSet="/logodesktop.webp" type="image/webp" />
+                      <img 
+                        src="/logodesktop.webp" 
+                        alt="Cabinet CM360 - Expert en gestion de trésorerie"
+                        className={`h-6 sm:h-8 md:h-12 lg:h-14 w-auto transition-all duration-300 ${
+                          isScrolled ? '' : 'drop-shadow-lg brightness-125'
+                        }`}
+                        style={{
+                          filter: isScrolled ? 'none' : 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
+                        }}
+                      />
+                    </picture>
                   </Link>
                 </motion.div>
 
@@ -323,61 +322,85 @@ const Navbar: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Mobile Navbar */}
-        <div className="md:hidden flex justify-center pt-2 px-4">
-          <div className="flex items-center justify-center w-full max-w-sm relative">
-            {/* Centered Logo with blur and drop shadow effects */}
+        {/* Mobile Navbar - Enhanced Design */}
+        <div className="md:hidden flex justify-center pt-3 px-4">
+          <div className="flex items-center justify-center w-full max-w-md relative">
+            {/* Logo responsive : mobile et desktop */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="relative"
             >
-              {/* Simple blur effect behind logo */}
-              <div className="absolute inset-0 w-14 h-14 bg-white/20 backdrop-blur-md rounded-3xl -z-10 blur-sm"></div>
-              
-              {/* Simple white drop shadow effect */}
-              <div className="absolute inset-0 w-16 h-4 bg-white/30 rounded-full -z-20 transform translate-y-2 blur-md"></div>
-              
+              {/* Logo mobile */}
               <Link 
                 to="/"
-                className="flex items-center transition-all duration-300 hover:scale-105"
+                className="flex items-center transition-all duration-300 hover:scale-105 md:hidden"
               >
                 <motion.img 
-                  src="/logo cm.png" 
-                  alt="Cabinet CM360 - Expert en gestion de trésorerie"
-                  className="h-10 w-auto transition-all duration-300 drop-shadow-lg brightness-125"
+                  src="/logomobile.webp" 
+                  alt="Cabinet CM360 - Mobile Logo"
+                  className="h-12 w-auto transition-all duration-300"
                   style={{
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
+                    filter: isScrolled 
+                      ? 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' 
+                      : 'drop-shadow(0 2px 8px rgba(0,0,0,0.3)) brightness-110'
                   }}
+                  animate={{ opacity: isScrolled ? 0 : 1 }}
+                  transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                   whileHover={{ 
                     scale: 1.05,
                     transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
                   }}
                 />
               </Link>
+              {/* Logo desktop/tablette - Masqué sur mobile */}
+              <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="hidden md:block"
+                >
+                  <Link 
+                    to="/"
+                    className="flex items-center transition-all duration-300 hover:scale-105"
+                  >
+                    <picture>
+                      <source srcSet="/logodesktop.webp" type="image/webp" />
+                      <img 
+                        src="/logodesktop.webp" 
+                        alt="Cabinet CM360 - Expert en gestion de trésorerie"
+                        className={`h-6 sm:h-8 md:h-12 lg:h-14 w-auto transition-all duration-300 ${isScrolled ? '' : 'drop-shadow-lg brightness-125'}`}
+                        style={{
+                          filter: isScrolled ? 'none' : 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
+                        }}
+                      />
+                    </picture>
+                  </Link>
+                </motion.div>
             </motion.div>
 
-            {/* Mobile Menu Button with Circle - Completely on the right with 0 margin */}
+            {/* Enhanced Mobile Menu Button - Absolute Position */}
             <motion.button
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-3 rounded-full transition-all duration-400 ease-out focus:outline-none focus:ring-2 focus:ring-opacity-50 backdrop-blur-md border border-white/20 shadow-lg absolute ${
-                isScrolled ? 'bg-white/90' : 'bg-white/30'
-              }`}
+              className="p-2.5 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 absolute right-0 top-0"
               style={{ 
                 color: isScrolled ? theme.colors.text : 'white',
-                focusRingColor: theme.colors.primary,
-                right: '-12px',
-                top: '0'
+                backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(12px)',
+                border: `1px solid ${isScrolled ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.25)'}`,
+                boxShadow: isScrolled 
+                  ? '0 4px 12px rgba(0, 0, 0, 0.1)' 
+                  : '0 4px 12px rgba(0, 0, 0, 0.2)'
               }}
               whileHover={{ 
-                scale: 1.1,
-                transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
+                scale: 1.08,
+                transition: { duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }
               }}
-              whileTap={{ scale: 0.9 }}
+              whileTap={{ scale: 0.92 }}
               aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
               aria-expanded={isMobileMenuOpen}
             >
@@ -386,7 +409,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Modern & Sophisticated */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -394,113 +417,76 @@ const Navbar: React.FC = () => {
               initial="closed"
               animate="open"
               exit="closed"
-              className="md:hidden overflow-hidden border-t backdrop-blur-lg rounded-b-2xl bg-white/95 shadow-xl"
+              className="md:hidden overflow-hidden border-t backdrop-blur-xl rounded-3xl bg-white/95 shadow-xl mx-4"
               style={{ 
-                borderColor: theme.colors.light
+                borderColor: 'rgba(0, 0, 0, 0.06)',
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.12)'
               }}
             >
-              <div className="px-4 py-4 space-y-2">
+              <div className="px-6 py-6 space-y-2">
                 {navigationLinks.map((link, index) => {
                   return (
-                    <motion.div 
-                      key={index}
-                      variants={mobileMenuItemVariants}
-                      initial="closed"
-                      animate="open"
-                      exit="closed"
-                      transition={{ delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                    >
-                      {link.isAnchor ? (
-                        <button
-                          onClick={() => handleMobileLinkClick(link.href)}
-                          className="block w-full text-left py-3 px-4 text-lg font-medium rounded-full transition-all duration-400 ease-out hover:scale-105 text-gray-800 hover:bg-blue-50"
-                          style={{ 
-                            backgroundColor: 'transparent',
-                            border: 'none',
-                            outline: 'none'
+                    <div key={index}>
+                      <motion.div 
+                        variants={mobileMenuItemVariants}
+                        initial="closed"
+                        animate="open"
+                        exit="closed"
+                        transition={{ delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
+                      >
+                        {link.isAnchor ? (
+                          <button
+                            onClick={() => handleMobileLinkClick(link.href)}
+                            className="block w-full text-left py-3.5 px-5 text-base font-medium rounded-xl transition-all duration-300 text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                            style={{ 
+                              backgroundColor: 'transparent',
+                              border: 'none',
+                              outline: 'none'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.04)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = 'transparent';
+                            }}
+                          >
+                            {link.name}
+                          </button>
+                        ) : (
+                          <Link
+                            to={link.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block py-3.5 px-5 text-base font-medium rounded-xl transition-all duration-300 text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                            style={{ 
+                              backgroundColor: 'transparent'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.04)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = 'transparent';
+                            }}
+                          >
+                            {link.name}
+                          </Link>
+                        )}
+                      </motion.div>
+                      
+                      {/* Gradient Separator */}
+                      {index < navigationLinks.length - 1 && (
+                        <motion.div
+                          initial={{ opacity: 0, scaleX: 0 }}
+                          animate={{ opacity: 1, scaleX: 1 }}
+                          transition={{ delay: (index + 1) * 0.08 + 0.1, duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                          className="mx-5 my-2 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent"
+                          style={{
+                            background: 'linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.3) 50%, transparent 100%)'
                           }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = `${theme.colors.primary}10`;
-                            e.currentTarget.style.color = theme.colors.primary;
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = 'transparent';
-                            e.currentTarget.style.color = theme.colors.text;
-                          }}
-                        >
-                          {link.name}
-                        </button>
-                      ) : (
-                        <Link
-                          to={link.href}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="block py-3 px-4 text-lg font-medium rounded-full transition-all duration-400 ease-out hover:scale-105 text-gray-800 hover:bg-blue-50"
-                          style={{ 
-                            backgroundColor: 'transparent'
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = `${theme.colors.primary}10`;
-                            e.currentTarget.style.color = theme.colors.primary;
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = 'transparent';
-                            e.currentTarget.style.color = theme.colors.text;
-                          }}
-                        >
-                          {link.name}
-                        </Link>
+                        />
                       )}
-                    </motion.div>
+                    </div>
                   );
                 })}
-                
-                {/* Contact Info in Mobile Menu */}
-                <motion.div
-                  variants={mobileMenuItemVariants}
-                  initial="closed"
-                  animate="open"
-                  exit="closed"
-                  transition={{ delay: navigationLinks.length * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="pt-4 mt-4 border-t"
-                  style={{ 
-                    borderColor: theme.colors.light
-                  }}
-                >
-                  <div className="space-y-2 text-sm">
-                    <motion.a 
-                      href="mailto:info@cabinetcm360.com"
-                      className="block transition-colors duration-300 text-gray-600 hover:text-blue-600"
-                      whileHover={{ 
-                        scale: 1.02,
-                        transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = theme.colors.primary;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = theme.colors.text;
-                      }}
-                    >
-                      �� info@cabinetcm360.com
-                    </motion.a>
-                    <motion.a 
-                      href="tel:438-521-3151"
-                      className="block transition-colors duration-300 text-gray-600 hover:text-blue-600"
-                      whileHover={{ 
-                        scale: 1.02,
-                        transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = theme.colors.primary;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = theme.colors.text;
-                      }}
-                    >
-                      📞 438-521-3151
-                    </motion.a>
-                  </div>
-                </motion.div>
               </div>
             </motion.div>
           )}
