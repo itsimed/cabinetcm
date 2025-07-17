@@ -37,7 +37,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         className="group cursor-pointer transition-all duration-300 hover:-translate-y-1"
         onClick={handleCardClick}
       >
-        <div className="relative rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-out transform h-96 group overflow-hidden">
+        <div 
+          className="relative rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-out transform h-96 group overflow-hidden border-4 border-transparent hover:border-yellow-500"
+          style={{
+            borderRadius: '1rem'
+          }}
+        >
           {/* Image Container with overflow hidden and border radius */}
           <div className="absolute inset-0 rounded-2xl overflow-hidden">
             <img
@@ -63,8 +68,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             />
           </div>
           
-          {/* Gradient Overlay - Enhanced for better text visibility */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20 rounded-2xl transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/75 group-hover:via-black/30 group-hover:to-black/10" />
+          {/* Gradient Overlay - Light for better image visibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent rounded-2xl transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-black/20 group-hover:via-black/5 group-hover:to-transparent" />
           
           {/* Content Container */}
           <div className="absolute inset-0 flex flex-col justify-between p-6 text-white">

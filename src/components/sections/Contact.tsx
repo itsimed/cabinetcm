@@ -154,8 +154,8 @@ const Contact: React.FC = () => {
     >
       {/* Static background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-gradient-to-r from-blue-200/20 to-cyan-200/20 blur-xl" />
-        <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-gradient-to-r from-purple-200/20 to-pink-200/20 blur-xl" />
+        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-gradient-to-r from-yellow-200/20 to-yellow-300/20 blur-xl" />
+        <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-gradient-to-r from-yellow-300/20 to-yellow-400/20 blur-xl" />
       </div>
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
@@ -215,7 +215,7 @@ const Contact: React.FC = () => {
                     className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-400 ease-out focus:outline-none backdrop-blur-sm bg-white/50 placeholder-gray-400 focus:scale-[1.02] ${
                       errors.fullName 
                         ? 'border-red-400 focus:border-red-500 focus:ring-4 focus:ring-red-200' 
-                        : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 hover:border-gray-300'
+                        : 'border-gray-200 focus:border-yellow-500 focus:ring-4 focus:ring-yellow-200 hover:border-gray-300'
                     }`}
                     placeholder="Entrez votre nom complet"
                   />
@@ -245,7 +245,7 @@ const Contact: React.FC = () => {
                     className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-400 ease-out focus:outline-none backdrop-blur-sm bg-white/50 placeholder-gray-400 focus:scale-[1.02] ${
                       errors.email 
                         ? 'border-red-400 focus:border-red-500 focus:ring-4 focus:ring-red-200' 
-                        : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 hover:border-gray-300'
+                        : 'border-gray-200 focus:border-yellow-500 focus:ring-4 focus:ring-yellow-200 hover:border-gray-300'
                     }`}
                     placeholder="votre@email.com"
                   />
@@ -275,7 +275,7 @@ const Contact: React.FC = () => {
                     className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-400 ease-out focus:outline-none backdrop-blur-sm bg-white/50 placeholder-gray-400 focus:scale-[1.02] ${
                       errors.phone 
                         ? 'border-red-400 focus:border-red-500 focus:ring-4 focus:ring-red-200' 
-                        : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 hover:border-gray-300'
+                        : 'border-gray-200 focus:border-yellow-500 focus:ring-4 focus:ring-yellow-200 hover:border-gray-300'
                     }`}
                     placeholder="+1 (555) 000-0000"
                   />
@@ -305,7 +305,7 @@ const Contact: React.FC = () => {
                     className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-300 focus:outline-none resize-none backdrop-blur-sm bg-white/50 placeholder-gray-400 focus:scale-[1.01] ${
                       errors.message 
                         ? 'border-red-400 focus:border-red-500 focus:ring-4 focus:ring-red-200' 
-                        : 'border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 hover:border-gray-300'
+                        : 'border-gray-200 focus:border-yellow-500 focus:ring-4 focus:ring-yellow-200 hover:border-gray-300'
                     }`}
                     placeholder="Décrivez votre demande ou question..."
                   />
@@ -329,7 +329,7 @@ const Contact: React.FC = () => {
                       : 'hover:shadow-2xl transform-gpu'
                   }`}
                   style={{ 
-                    background: `linear-gradient(135deg, ${theme.colors.primary}, #0ea5e9)`,
+                    background: `linear-gradient(135deg, ${theme.colors.primary}, #D4AF37)`,
                     color: theme.colors.white
                   }}
                 >

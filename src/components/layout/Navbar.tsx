@@ -231,7 +231,7 @@ const Navbar: React.FC = () => {
         <div className="hidden md:flex justify-center pt-1 sm:pt-2 md:pt-4 px-1 sm:px-2 md:px-4">
           <motion.div 
             className={`transition-all duration-500 ease-out rounded-3xl sm:rounded-2xl md:rounded-full border border-white/20 shadow-lg backdrop-blur-md max-w-6xl w-full ${
-              isScrolled ? 'bg-white/90 shadow-xl' : 'bg-white/30'
+              isScrolled ? 'bg-white shadow-xl' : 'bg-white'
             }`}
             whileHover={{ 
               scale: 1.01,
@@ -291,15 +291,13 @@ const Navbar: React.FC = () => {
                       >
                         <NavComponent
                           {...linkProps}
-                          className={`relative text-base sm:text-lg lg:text-xl font-medium transition-all duration-300 hover:scale-105 ${
-                            isScrolled ? '' : 'text-white drop-shadow-md'
-                          }`}
-                          style={{ color: isScrolled ? theme.colors.text : 'white' }}
+                          className={`relative text-base sm:text-lg lg:text-xl font-medium transition-all duration-300 hover:scale-105`}
+                          style={{ color: theme.colors.text }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = isScrolled ? theme.colors.primary : theme.colors.secondary;
+                            e.currentTarget.style.color = theme.colors.secondary;
                           }}
                           onMouseLeave={(e) => {
-                            e.currentTarget.style.color = isScrolled ? theme.colors.text : 'white';
+                            e.currentTarget.style.color = theme.colors.text;
                           }}
                         >
                           {link.name}
@@ -390,13 +388,11 @@ const Navbar: React.FC = () => {
               disabled={isMenuAnimating}
               className="p-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 absolute right-0 top-0 disabled:pointer-events-none"
               style={{
-                color: isScrolled ? theme.colors.text : 'white',
-                backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.15)',
+                color: theme.colors.text,
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
                 backdropFilter: 'blur(12px)',
-                border: `1px solid ${isScrolled ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.25)'}`,
-                boxShadow: isScrolled
-                  ? '0 4px 12px rgba(0, 0, 0, 0.1)'
-                  : '0 4px 12px rgba(0, 0, 0, 0.2)'
+                border: '1px solid rgba(0, 0, 0, 0.08)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
               }}
               aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
               aria-expanded={isMobileMenuOpen}
@@ -479,9 +475,9 @@ const Navbar: React.FC = () => {
                           initial={{ opacity: 0, scaleX: 0 }}
                           animate={{ opacity: 1, scaleX: 1 }}
                           transition={{ delay: (index + 1) * 0.08 + 0.1, duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                          className="mx-5 my-2 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent"
+                          className="mx-5 my-2 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"
                           style={{
-                            background: 'linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.3) 50%, transparent 100%)'
+                            background: 'linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.3) 50%, transparent 100%)'
                           }}
                         />
                       )}

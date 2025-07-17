@@ -103,7 +103,7 @@ const Footer: React.FC = () => {
     <footer
       className="relative py-16 lg:py-20 px-6 lg:px-12 overflow-hidden"
       style={{ 
-        background: `linear-gradient(135deg, ${theme.colors.primary} 0%, #0ea5e9 50%, ${theme.colors.primary} 100%)`,
+        background: `linear-gradient(135deg, ${theme.colors.primary} 0%, #D4AF37 50%, ${theme.colors.primary} 100%)`,
         fontFamily: theme.fonts.body
       }}
     >

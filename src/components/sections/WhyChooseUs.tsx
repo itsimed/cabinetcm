@@ -81,8 +81,8 @@ const WhyChooseUs: React.FC = () => {
     >
       {/* Static background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-gradient-to-r from-blue-100/30 to-cyan-100/30 blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-48 h-48 rounded-full bg-gradient-to-r from-purple-100/30 to-pink-100/30 blur-3xl" />
+        <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-gradient-to-r from-yellow-100/30 to-yellow-200/30 blur-3xl" />
+        <div className="absolute bottom-20 left-10 w-48 h-48 rounded-full bg-gradient-to-r from-yellow-200/30 to-yellow-300/30 blur-3xl" />
       </div>
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
@@ -107,86 +107,105 @@ const WhyChooseUs: React.FC = () => {
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {data.map((item, index) => (
-            <div
-              key={index}
-              className="group transition-all duration-700 hover:-translate-y-2"
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Text */}
+          <div className="order-2 lg:order-1">
+            <p 
+              className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-medium"
+              style={{ 
+                fontFamily: theme.fonts.body,
+                color: theme.colors.text 
+              }}
             >
-              <div 
-                className="relative bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-1000 ease-out transform group-hover:-translate-y-4 group-hover:scale-110 h-full flex flex-col items-center text-center border border-white/30 hover:border-white/50 overflow-hidden hover:scale-[1.02]"
-                style={{ 
-                  fontFamily: theme.fonts.body
-                }}
-              >
-                {/* Gradient background overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 ease-out" />
-                
-                {/* Border accent */}
-                <div 
-                  className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r transition-all duration-800 ease-out group-hover:h-3"
-                  style={{ 
-                    background: `linear-gradient(90deg, ${theme.colors.primary}, #0ea5e9, ${theme.colors.primary})`
-                  }}
-                />
-                
-                {/* Icon */}
-                <div 
-                  className="relative mb-6 p-6 rounded-full transition-all duration-1000 ease-out group-hover:scale-125 group-hover:rotate-10"
-                  style={{ 
-                    background: `linear-gradient(135deg, ${theme.colors.primary}20, ${theme.colors.primary}10)`,
-                    color: theme.colors.primary
-                  }}
+              Cabinet CM360 est votre partenaire de confiance pour une gestion de trésorerie optimale. 
+              Notre expertise vous accompagne vers le succès financier.
+            </p>
+          </div>
+
+          {/* Right Column - Grid */}
+          <div className="order-1 lg:order-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {data.map((item, index) => (
+                <div
+                  key={index}
+                  className="group transition-all duration-700 hover:-translate-y-2"
                 >
-                  {/* Icon glow effect */}
+                  <div 
+                    className="relative bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-1000 ease-out transform group-hover:-translate-y-4 group-hover:scale-110 h-full flex flex-col items-center text-center border border-white/30 hover:border-white/50 overflow-hidden hover:scale-[1.02]"
+                    style={{ 
+                      fontFamily: theme.fonts.body
+                    }}
+                  >
+                                    {/* Gradient background overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-yellow-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 ease-out" />
+                    
+                    {/* Border accent */}
+                    <div 
+                      className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r transition-all duration-800 ease-out group-hover:h-3"
+                      style={{ 
+                        background: `linear-gradient(90deg, ${theme.colors.primary}, #D4AF37, ${theme.colors.primary})`
+                      }}
+                    />
+                    
+                    {/* Icon */}
+                    <div 
+                      className="relative mb-4 p-4 rounded-full transition-all duration-1000 ease-out group-hover:scale-125 group-hover:rotate-10"
+                      style={{ 
+                        background: `linear-gradient(135deg, ${theme.colors.primary}20, ${theme.colors.primary}10)`,
+                        color: theme.colors.primary
+                      }}
+                    >
+                                        {/* Icon glow effect */}
                   <div 
                     className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000 ease-out blur-xl"
                     style={{ 
-                      background: `linear-gradient(135deg, ${theme.colors.primary}30, #0ea5e930)`
+                      background: `linear-gradient(135deg, ${theme.colors.primary}30, #D4AF3730)`
                     }}
                   />
-                  <div className="relative z-10">
-                    {getIcon(item.icon)}
-                  </div>
-                </div>
+                      <div className="relative z-10">
+                        {getIcon(item.icon)}
+                      </div>
+                    </div>
 
-                {/* Title */}
-                <h3 
-                  className="relative text-xl font-bold mb-4 group-hover:text-2xl transition-all duration-800 ease-out hover:scale-[1.08]"
-                  style={{ 
-                    color: theme.colors.primary,
-                    fontFamily: theme.fonts.heading
-                  }}
-                >
-                  {item.title}
-                  {/* Underline effect */}
+                    {/* Title */}
+                    <h3 
+                      className="relative text-lg font-bold mb-3 group-hover:text-xl transition-all duration-800 ease-out hover:scale-[1.08]"
+                      style={{ 
+                        color: theme.colors.primary,
+                        fontFamily: theme.fonts.heading
+                      }}
+                    >
+                      {item.title}
+                                        {/* Underline effect */}
                   <div
                     className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r transition-all duration-800 ease-out group-hover:w-full group-hover:left-0"
                     style={{
-                      background: `linear-gradient(90deg, ${theme.colors.primary}, #0ea5e9)`
+                      background: `linear-gradient(90deg, ${theme.colors.primary}, #D4AF37)`
                     }}
                   />
-                </h3>
+                    </h3>
 
-                {/* Description */}
-                <p 
-                  className="relative leading-relaxed flex-grow text-sm group-hover:text-base transition-all duration-800 ease-out hover:opacity-100"
-                  style={{ color: theme.colors.text }}
-                >
-                  {item.description}
-                </p>
-                
-                {/* Hover indicator */}
-                <div
-                  className="mt-4 w-0 h-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:w-8 transition-all duration-1000 ease-out"
-                  style={{
-                    background: `linear-gradient(90deg, ${theme.colors.primary}, #0ea5e9)`
-                  }}
-                />
-              </div>
+                    {/* Description */}
+                    <p 
+                      className="relative leading-relaxed flex-grow text-sm group-hover:text-base transition-all duration-800 ease-out hover:opacity-100"
+                      style={{ color: theme.colors.text }}
+                    >
+                      {item.description}
+                    </p>
+                    
+                    {/* Hover indicator */}
+                    <div
+                      className="mt-3 w-0 h-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:w-6 transition-all duration-1000 ease-out"
+                      style={{
+                        background: `linear-gradient(90deg, ${theme.colors.primary}, #D4AF37)`
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

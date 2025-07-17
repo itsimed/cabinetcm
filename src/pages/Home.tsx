@@ -25,14 +25,14 @@ const Home: React.FC = () => {
         <Hero />
       </section>
 
-      {/* Why Choose Us Section */}
-      <section id="why-choose-us" className="mt-0">
-        <WhyChooseUs />
-      </section>
-
       {/* Services Section */}
       <section id="services" className="mt-0">
         <Services />
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section id="why-choose-us" className="mt-0">
+        <WhyChooseUs />
       </section>
 
       {/* Contact Section */}

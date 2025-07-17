@@ -65,19 +65,19 @@ const Hero: React.FC = () => {
           
           <div className="pt-4 sm:pt-6 md:pt-8 transition-all duration-300">
             <button
-              className="px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full font-semibold text-sm sm:text-base md:text-lg lg:text-xl transition-all duration-500 ease-out shadow-lg hover:shadow-2xl w-full sm:w-auto hover:scale-102 hover:-translate-y-1 active:scale-99"
+              className="px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5 rounded-full font-semibold text-sm sm:text-base md:text-lg lg:text-xl transition-all duration-500 ease-out shadow-lg hover:shadow-2xl w-full sm:w-auto hover:scale-102 hover:-translate-y-1 active:scale-99 border-2 border-transparent hover:border-black"
               style={{ 
-                backgroundColor: theme.colors.primary,
-                color: theme.colors.white,
-                boxShadow: '0 4px 15px rgba(0, 64, 128, 0.2)'
+                backgroundColor: '#B8860B',
+                color: '#FFFFFF',
+                boxShadow: '0 4px 15px rgba(184, 134, 11, 0.3)'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#003366';
-                e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 64, 128, 0.3)';
+                e.currentTarget.style.backgroundColor = '#D4AF37';
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(184, 134, 11, 0.4)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = theme.colors.primary;
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 64, 128, 0.2)';
+                e.currentTarget.style.backgroundColor = '#B8860B';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(184, 134, 11, 0.3)';
               }}
               onClick={() => {
                 const servicesSection = document.querySelector('#services');
